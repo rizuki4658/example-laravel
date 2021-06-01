@@ -1,0 +1,28 @@
+1. File .env mengatur database name, username dan password nya
+2. Folder app, membuat folder Models agar lebih rapih pindahkan file User.php ke folder Models
+3. Menambahkan name space App dibawah folder Models di file User.php
+4. Folder database, bagian migrations delete reset table file
+5. Folder databse, bagian create table, disable/hapus remembertoken()
+6. Folder app\models, bagian fillable di ubah dari name menjadi sesuai dengan yang ada di file point no 5
+7. Lakukan di command line, php artisan migrate kemudian cek GUI database.
+
+8. Folder routes, untuk otomatis berada pada prefix API dan melindungi dibawah middleware API nya, buat lah group untuk menbungkus fungsi2 yang lain
+9. Folder routes file api.php
+10. Folder app/Http/Controllers, buat dengan command line php artisan make:controller sesuai pada routes point 9
+11. Folder app/Http/Controllers, buat function rules untuk fill ke databse, kemudian buat function untuk accept data json,
+12. Folder app/Http/Controllers, load atau tambah kan models user nya,
+
+13. JWT. libary jwt-auth, kemudian install di command line. composer reuqire tymon/jwt-auth
+14. Folder config, app.php, tambahkan di array providers dan array alias,
+15. Generate Commandline php artisan jwt:generate
+16. File .env tambahkn JWT_SECRET, di ambil dari hasil generate point 15 atau ambil dari folder config/jwt.php
+17. Ubah di folder config\jwt.php bagian 'App\User' jadi App\Models\User begitu pula di config\Auth.php
+18. JWT Authentiction, penambahan Folder app\http\kernel.php penambahan $routesMiddleware referensi link https://github.com/tymondesigns/jwt-auth/wiki/Authentication
+19. Folder routes\api.php
+20. Membuat file migration baru untuk tabel baru, php artisan make:migration create_inventory_table --create=inventory
+21. setiap membuat table baru dan controller baru pastikan jika model yang di gunakan sama/ jika berbeda maka buat models baru kemudian load di controller nya
+
+Notes Ringkasan Pattern API
+1. Configurasi yang diperlukan(dbname dll) -> install atau menambhakn dependencies jwt
+2. dari routes -> make migration -> make migrate -> make models -> membuat controller -> menentukan relation(jika perlu) -> membuat function di controller -> test
+3. untuk Handle Cors, membuat middleware baru kemudian update di kernel.php
